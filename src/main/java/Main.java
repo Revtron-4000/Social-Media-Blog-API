@@ -17,12 +17,14 @@ public class Main {
     public static void main(String[] args) {
         ConnectionUtil.resetTestDatabase();
         AccountDAOImplementation accountDAO = new AccountDAOImplementation();
+        AccountService as = new AccountService();
+
         System.out.println(accountDAO.getAllAccounts());
 
-        accountDAO.insertAccount(new Account("mr.big", "123451668"));
-        accountDAO.insertAccount(new Account("mr.mid", "56789"));
-        accountDAO.insertAccount(new Account("mr.small", "12345"));
-        accountDAO.insertAccount(new Account("mr.x", "56789"));
+        System.out.println(as.createAccount(new Account("mr.big", "123451668")));
+        // as.createAccount(new Account("mr.mid", "56789"));
+        // as.createAccount(new Account("mr.small", "12345"));
+        // as.createAccount(new Account("mr.x", "56789"));
 
 
         System.out.println(accountDAO.getAllAccounts());
@@ -31,7 +33,6 @@ public class Main {
         // System.out.println(accountDAO.getAccountByUsername("mr.mid"));
         // System.out.println();
         System.out.println("-----------");
-        AccountService as = new AccountService();
         as.createAccount("", "12314");
         as.createAccount("asfasf", "123");
         as.createAccount("mr.big", "1231231");

@@ -26,6 +26,13 @@ public class AccountService {
         return accDAO.insertAccount(new Account(username, password));
     }
 
+    public Account createAccount(Account acc) {
+        if (acc.getUsername().isEmpty() || acc.getPassword().length() < 4 || accDAO.getAccountByUsername(acc.getUsername()) != null) {
+            return null;
+        }
+        return accDAO.insertAccount(acc);
+    }
+
     public List<Account> getAllAccounts() {
         return accDAO.getAllAccounts(); 
     }

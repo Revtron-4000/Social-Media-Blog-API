@@ -65,12 +65,16 @@ public class AccountDAOImplementation implements AccountDAO {
 
         String sql = "INSERT INTO account(username, password) VALUES (?, ?)";
         try {
-            PreparedStatement ps = conn.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, acc.getUsername());
             ps.setString(2, acc.getPassword());
 
             ps.executeUpdate();
-            return acc;
+            ResultSet generatedKeys = ps.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                int generatedAccountId = generatedKeys.getInt("account_id");
+                return new Account(generatedAccountId, acc.getUsername(), acc.getPassword());
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
