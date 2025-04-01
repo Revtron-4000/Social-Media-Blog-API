@@ -36,4 +36,8 @@ public class AccountService {
     public List<Account> getAllAccounts() {
         return accDAO.getAllAccounts(); 
     }
+
+    public Account login(Account acc) {
+        return accDAO.getAccountByUsernameAndPassword(acc.getUsername(),acc.getPassword());
+    }
 }

@@ -20,26 +20,22 @@ public class Main {
         AccountService as = new AccountService();
 
         System.out.println(accountDAO.getAllAccounts());
-
-        System.out.println(as.createAccount(new Account("mr.big", "123451668")));
-        // as.createAccount(new Account("mr.mid", "56789"));
-        // as.createAccount(new Account("mr.small", "12345"));
-        // as.createAccount(new Account("mr.x", "56789"));
-
-
-        System.out.println(accountDAO.getAllAccounts());
         System.out.println();
 
-        // System.out.println(accountDAO.getAccountByUsername("mr.mid"));
-        // System.out.println();
-        System.out.println("-----------");
-        as.createAccount("", "12314");
-        as.createAccount("asfasf", "123");
-        as.createAccount("mr.big", "1231231");
-
+        Account mrBig = as.createAccount(new Account("mr.big", "123451668"));
+        System.out.println("THIS IS mrBig!!!!: " + mrBig);
+        as.createAccount(new Account("mr.mid", "56789"));
+        as.createAccount(new Account("mr.small", "12345"));
+        as.createAccount(new Account("mr.x", "56789"));
         as.createAccount("mr.bigshot", "as14");
 
         System.out.println(as.getAllAccounts());
+        System.out.println("TESTING AREA\n");
+        System.out.println(accountDAO.getAccountByUsernameAndPassword("asfafaf", "alsfjlajflkajlkj"));
+        System.out.println(accountDAO.getAccountByUsernameAndPassword("mr.big", "123451668"));
+
+
+        
 
 
         // SocialMediaController controller = new SocialMediaController();

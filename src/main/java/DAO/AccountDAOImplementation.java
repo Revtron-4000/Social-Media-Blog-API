@@ -58,6 +58,31 @@ public class AccountDAOImplementation implements AccountDAO {
         return null;
     }
 
+    public Account getAccountByUsernameAndPassword(String username, String password) {
+        Connection conn = ConnectionUtil.getConnection();
+
+        try {
+            String sql = "SELECT * FROM account WHERE username=? AND password=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                Account acc = new Account(rs.getInt("account_id"), 
+                rs.getString("username"), 
+                rs.getString("password")
+                );
+
+                return acc;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
 
     @Override
     public Account insertAccount(Account acc) {
