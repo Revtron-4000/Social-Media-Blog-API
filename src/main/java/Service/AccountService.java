@@ -20,14 +20,14 @@ public class AccountService {
      * and an Account with that username does not already exist. 
      */
     public Account createAccount(String username, String password) {
-        if (username.isEmpty() || password.length() < 4 || accDAO.getAccountByUsername(username) != null) {
+        if (username.isBlank() || password.length() < 4 || accDAO.getAccountByUsername(username) != null) {
             return null;
         }
         return accDAO.insertAccount(new Account(username, password));
     }
 
     public Account createAccount(Account acc) {
-        if (acc.getUsername().isEmpty() || acc.getPassword().length() < 4 || accDAO.getAccountByUsername(acc.getUsername()) != null) {
+        if (acc.getUsername().isBlank() || acc.getPassword().length() < 4 || accDAO.getAccountByUsername(acc.getUsername()) != null) {
             return null;
         }
         return accDAO.insertAccount(acc);

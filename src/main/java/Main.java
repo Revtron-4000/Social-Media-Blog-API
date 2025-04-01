@@ -27,18 +27,18 @@ public class Main {
         MessageDAO messageDAO = new MessageDAOImplementation();
         MessageService ms = new MessageService();
 
+        System.out.println(as.createAccount(new Account("   ", "1234")));
+        // System.out.println(messageDAO.getAllMessages());
 
-        System.out.println(messageDAO.getAllMessages());
+        // System.out.println(messageDAO.insertMessage(new Message(1, "Hello there", 2341252L)));
+        // System.out.println(messageDAO.getAllMessages());
 
-        System.out.println(messageDAO.insertMessage(new Message(1, "Hello there", 2341252L)));
-        System.out.println(messageDAO.getAllMessages());
-
-        System.out.println("TESTING AREA\n");
-        System.out.println(ms.postMessage(new Message(3123, "epqlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfre", 2341252L)));
-        System.out.println(ms.postMessage(new Message(1, "ep11qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L)));
-        System.out.println(ms.postMessage(new Message(1, "", 2341252L)));
+        // System.out.println("TESTING AREA\n");
+        // System.out.println(ms.postMessage(new Message(3123, "epqlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfre", 2341252L)));
+        // System.out.println(ms.postMessage(new Message(1, "ep11qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L)));
+        // System.out.println(ms.postMessage(new Message(1, "", 2341252L)));
         
-        System.out.println(ms.postMessage(new Message(1, "ep1qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L)));
+        // System.out.println(ms.postMessage(new Message(1, "ep1qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L)));
 
         
 
