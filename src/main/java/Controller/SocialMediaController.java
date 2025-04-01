@@ -38,6 +38,10 @@ public class SocialMediaController {
         app.post("/login", this::postLoginHandler);
         app.post("/messages", this::postMessagesHandler);
 
+        app.get("/messages", this::getAllMessagesHandler);
+        app.get("/messages/{message_id}", this::getMessageHandler);
+
+
         return app;
     }
 
@@ -86,6 +90,19 @@ public class SocialMediaController {
         } else {
             ctx.status(400);
         }
+    }
+
+    private void getAllMessagesHandler(Context ctx) {
+        ctx.json(ms.getAllMessages());
+        ctx.status(200);
+    }
+
+    private void getMessageHandler(Context ctx) throws JsonProcessingException, NumberFormatException {
+        String message_id_String = ctx.pathParam("message_id");
+        int message_id = Integer.valueOf(message_id_String);
+        
+        ctx.json(ms.getMessageById(message_id));
+        ctx.status(200);
     }
 
 

@@ -35,6 +35,29 @@ public class MessageDAOImplementation implements MessageDAO {
         return messages;
     }
 
+    public Message getMessageById(int message_id) {
+        Connection conn = ConnectionUtil.getConnection();
+
+        try {
+            String sql = "SELECT * FROM message WHERE message_id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, message_id);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return new Message(rs.getInt("message_id"),
+                rs.getInt("posted_by"),
+                rs.getString("message_text"),
+                rs.getLong("time_posted_epoch")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
+    }
+
     @Override
     public Message insertMessage(Message m) {
         Connection conn = ConnectionUtil.getConnection();

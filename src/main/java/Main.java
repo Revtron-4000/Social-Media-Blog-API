@@ -21,33 +21,30 @@ import Service.MessageService;
  */
 public class Main {
     public static void main(String[] args) {
-        ConnectionUtil.resetTestDatabase();
-        AccountDAO accountDAO = new AccountDAOImplementation();
-        AccountService as = new AccountService();
-        MessageDAO messageDAO = new MessageDAOImplementation();
-        MessageService ms = new MessageService();
+        // ConnectionUtil.resetTestDatabase();
+        // AccountDAO accountDAO = new AccountDAOImplementation();
+        // AccountService as = new AccountService();
+        // MessageDAO messageDAO = new MessageDAOImplementation();
+        // MessageService ms = new MessageService();
 
-        System.out.println(as.createAccount(new Account("   ", "1234")));
         // System.out.println(messageDAO.getAllMessages());
-
         // System.out.println(messageDAO.insertMessage(new Message(1, "Hello there", 2341252L)));
         // System.out.println(messageDAO.getAllMessages());
 
-        // System.out.println("TESTING AREA\n");
-        // System.out.println(ms.postMessage(new Message(3123, "epqlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfre", 2341252L)));
-        // System.out.println(ms.postMessage(new Message(1, "ep11qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L)));
-        // System.out.println(ms.postMessage(new Message(1, "", 2341252L)));
+        // System.out.println("TESTING AREA\n");        
+        // ms.postMessage(new Message(1, "ep1qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L));
+        // ms.postMessage(new Message(1, "sfasf", 12314L));
+        // System.out.println(messageDAO.getAllMessages());
+        // System.out.println();
+
+
+        // System.out.println(messageDAO.getMessageById(100));
+    
         
-        // System.out.println(ms.postMessage(new Message(1, "ep1qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L)));
-
-        
 
 
-        
-
-
-        // SocialMediaController controller = new SocialMediaController();
-        // Javalin app = controller.startAPI();
-        // app.start(8080);
+        SocialMediaController controller = new SocialMediaController();
+        Javalin app = controller.startAPI();
+        app.start(8080);
     }
 }
