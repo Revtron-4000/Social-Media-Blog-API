@@ -37,8 +37,14 @@ public class Main {
         // System.out.println(messageDAO.getAllMessages());
         // System.out.println();
 
+        // System.out.println("Testing getMessageById\n");
+        // System.out.println(ms.getMessageById(1));
+        // System.out.println(ms.getMessageById(2));
+        // System.out.println(ms.getMessageById(3));
+        // System.out.println(ms.getMessageById(4));
+        // System.out.println(ms.getMessageById(5));
 
-        // System.out.println(messageDAO.getMessageById(100));
+
     
         
 

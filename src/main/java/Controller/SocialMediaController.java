@@ -101,7 +101,10 @@ public class SocialMediaController {
         String message_id_String = ctx.pathParam("message_id");
         int message_id = Integer.valueOf(message_id_String);
         
-        ctx.json(ms.getMessageById(message_id));
+        Message existingMessage = ms.getMessageById(message_id);
+        if (existingMessage != null) {
+            ctx.json(existingMessage);
+        }
         ctx.status(200);
     }
 

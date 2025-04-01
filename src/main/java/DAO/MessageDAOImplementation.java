@@ -45,11 +45,13 @@ public class MessageDAOImplementation implements MessageDAO {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                return new Message(rs.getInt("message_id"),
+                Message m = new Message(rs.getInt("message_id"),
                 rs.getInt("posted_by"),
                 rs.getString("message_text"),
                 rs.getLong("time_posted_epoch")
                 );
+
+                return m;
             }
         } catch (SQLException e) {
             e.printStackTrace();
