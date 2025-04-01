@@ -58,6 +58,33 @@ public class AccountDAOImplementation implements AccountDAO {
         return null;
     }
 
+    /*
+     * Find an existing Account in the database given the account_id.
+     * To be used by the MessageDAO to maintain referential integrity.
+     */
+    public Account getAccountById(int accountId) {
+        Connection conn = ConnectionUtil.getConnection();
+
+        try {
+            String sql = "SELECT * FROM account WHERE account_id = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, accountId);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Account acc = new Account(rs.getInt("account_id"), 
+                rs.getString("username"), 
+                rs.getString("password")
+                );
+                
+                return acc;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public Account getAccountByUsernameAndPassword(String username, String password) {
         Connection conn = ConnectionUtil.getConnection();
 

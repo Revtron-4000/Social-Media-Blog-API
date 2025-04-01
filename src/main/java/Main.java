@@ -4,9 +4,15 @@ import io.javalin.Javalin;
 
 // Delete later after testing
 import Util.ConnectionUtil;
+import DAO.AccountDAO;
 import DAO.AccountDAOImplementation;
+import DAO.MessageDAO;
+import DAO.MessageDAOImplementation;
+
 import Model.Account;
+import Model.Message;
 import Service.AccountService;
+import Service.MessageService;
 
 
 /**
@@ -16,23 +22,25 @@ import Service.AccountService;
 public class Main {
     public static void main(String[] args) {
         ConnectionUtil.resetTestDatabase();
-        AccountDAOImplementation accountDAO = new AccountDAOImplementation();
+        AccountDAO accountDAO = new AccountDAOImplementation();
         AccountService as = new AccountService();
+        MessageDAO messageDAO = new MessageDAOImplementation();
+        MessageService ms = new MessageService();
 
-        System.out.println(accountDAO.getAllAccounts());
-        System.out.println();
 
-        Account mrBig = as.createAccount(new Account("mr.big", "123451668"));
-        System.out.println("THIS IS mrBig!!!!: " + mrBig);
-        as.createAccount(new Account("mr.mid", "56789"));
-        as.createAccount(new Account("mr.small", "12345"));
-        as.createAccount(new Account("mr.x", "56789"));
-        as.createAccount("mr.bigshot", "as14");
+        System.out.println(messageDAO.getAllMessages());
 
-        System.out.println(as.getAllAccounts());
+        System.out.println(messageDAO.insertMessage(new Message(1, "Hello there", 2341252L)));
+        System.out.println(messageDAO.getAllMessages());
+
         System.out.println("TESTING AREA\n");
-        System.out.println(accountDAO.getAccountByUsernameAndPassword("asfafaf", "alsfjlajflkajlkj"));
-        System.out.println(accountDAO.getAccountByUsernameAndPassword("mr.big", "123451668"));
+        System.out.println(ms.postMessage(new Message(3123, "epqlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfre", 2341252L)));
+        System.out.println(ms.postMessage(new Message(1, "ep11qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L)));
+        System.out.println(ms.postMessage(new Message(1, "", 2341252L)));
+        
+        System.out.println(ms.postMessage(new Message(1, "ep1qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L)));
+
+        
 
 
         

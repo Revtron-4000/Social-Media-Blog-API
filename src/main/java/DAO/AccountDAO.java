@@ -8,6 +8,7 @@ public interface AccountDAO {
     public List<Account> getAllAccounts();
     public Account getAccountByUsername(String username);
     public Account getAccountByUsernameAndPassword(String username, String password);
+    public Account getAccountById(int accountId);
     public Account insertAccount(Account acc);
 
 }

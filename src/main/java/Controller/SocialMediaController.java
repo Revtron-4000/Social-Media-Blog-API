@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Account;
+import Model.Message;
 import Service.AccountService;
 import Service.MessageService;
 
@@ -35,6 +36,7 @@ public class SocialMediaController {
         app.get("example-endpoint", this::exampleHandler);
         app.post("/register", this::postRegisterHandler);
         app.post("/login", this::postLoginHandler);
+        app.post("/messages", this::postMessagesHandler);
 
         return app;
     }
@@ -71,7 +73,19 @@ public class SocialMediaController {
         } else {
             ctx.status(401);
         }
+    }
 
+    private void postMessagesHandler(Context ctx) throws JsonProcessingException {
+        ObjectMapper om = new ObjectMapper();
+        Message m = om.readValue(ctx.body(), Message.class);
+
+        Message existingMessage = ms.postMessage(m);
+        if (existingMessage != null) {
+            ctx.json(existingMessage);
+            ctx.status(200);
+        } else {
+            ctx.status(400);
+        }
     }
 
 
