@@ -41,6 +41,8 @@ public class SocialMediaController {
         app.get("/messages", this::getAllMessagesHandler);
         app.get("/messages/{message_id}", this::getMessageHandler);
 
+        app.delete("/messages/{message_id}", this::deleteMessageHandler);
+
 
         return app;
     }
@@ -108,5 +110,13 @@ public class SocialMediaController {
         ctx.status(200);
     }
 
+    private void deleteMessageHandler(Context ctx) throws NumberFormatException {
+        int message_id = Integer.valueOf(ctx.pathParam("message_id"));
+        Message deletedMessage = ms.deleteMessageById(message_id);
 
+        if (deletedMessage != null) {
+            ctx.json(deletedMessage);
+        }
+        ctx.status(200);
+    }
 }

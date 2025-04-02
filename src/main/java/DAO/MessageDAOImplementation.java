@@ -35,6 +35,7 @@ public class MessageDAOImplementation implements MessageDAO {
         return messages;
     }
 
+    @Override
     public Message getMessageById(int message_id) {
         Connection conn = ConnectionUtil.getConnection();
 
@@ -85,5 +86,22 @@ public class MessageDAOImplementation implements MessageDAO {
         }
 
         return null;
+    }
+
+    @Override
+    public Message deleteMessageById(int message_id) {
+        Connection conn = ConnectionUtil.getConnection();
+        Message m = getMessageById(message_id);
+
+        try {
+            String sql = "DELETE FROM message WHERE message_id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, message_id);
+
+            ps.executeUpdate();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return m;
     }
 }

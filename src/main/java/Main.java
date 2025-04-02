@@ -21,36 +21,36 @@ import Service.MessageService;
  */
 public class Main {
     public static void main(String[] args) {
-        // ConnectionUtil.resetTestDatabase();
-        // AccountDAO accountDAO = new AccountDAOImplementation();
-        // AccountService as = new AccountService();
-        // MessageDAO messageDAO = new MessageDAOImplementation();
-        // MessageService ms = new MessageService();
+        ConnectionUtil.resetTestDatabase();
+        AccountDAO accountDAO = new AccountDAOImplementation();
+        AccountService as = new AccountService();
+        MessageDAO messageDAO = new MessageDAOImplementation();
+        MessageService ms = new MessageService();
 
-        // System.out.println(messageDAO.getAllMessages());
-        // System.out.println(messageDAO.insertMessage(new Message(1, "Hello there", 2341252L)));
-        // System.out.println(messageDAO.getAllMessages());
+        System.out.println(messageDAO.getAllMessages());
+        System.out.println(messageDAO.insertMessage(new Message(1, "Hello there", 2341252L)));
+        System.out.println(messageDAO.getAllMessages());
 
-        // System.out.println("TESTING AREA\n");        
-        // ms.postMessage(new Message(1, "ep1qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L));
-        // ms.postMessage(new Message(1, "sfasf", 12314L));
-        // System.out.println(messageDAO.getAllMessages());
-        // System.out.println();
+        System.out.println("TESTING AREA\n");        
+        ms.postMessage(new Message(1, "ep1qlojgfiqexlfxrpeghmwdmiwhfyazltanwpphjsfilndtxsuuqspsozjxjgazommmtoiasojawudvreprjxkcnlsspwkaizrmmxotgjgzqsobcjtfuquwjmrervaeikkjzyctifemllaukpitapbkbqzkglihitmikemoskfjtisaxglxeuushrsnsbkkintzgywmrgiiwlqnbmnexudpvebhyboucctziarqqvmbpukhchkcazrluqlehfr", 2341252L));
+        ms.postMessage(new Message(1, "sfasf", 12314L));
+        System.out.println(messageDAO.getAllMessages());
+        System.out.println();
 
-        // System.out.println("Testing getMessageById\n");
-        // System.out.println(ms.getMessageById(1));
-        // System.out.println(ms.getMessageById(2));
-        // System.out.println(ms.getMessageById(3));
-        // System.out.println(ms.getMessageById(4));
-        // System.out.println(ms.getMessageById(5));
+        System.out.println("Testing deleteMessageById\n");
+        Message deletedMessage = messageDAO.getMessageById(3);
+        System.out.println(messageDAO.deleteMessageById(3).equals(deletedMessage));
+        System.out.println();
+        System.out.println(messageDAO.getAllMessages());
+
 
 
     
         
 
 
-        SocialMediaController controller = new SocialMediaController();
-        Javalin app = controller.startAPI();
-        app.start(8080);
+        // SocialMediaController controller = new SocialMediaController();
+        // Javalin app = controller.startAPI();
+        // app.start(8080);
     }
 }
