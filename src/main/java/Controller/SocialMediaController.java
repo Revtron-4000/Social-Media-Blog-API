@@ -43,6 +43,8 @@ public class SocialMediaController {
 
         app.delete("/messages/{message_id}", this::deleteMessageHandler);
 
+        app.patch("/messages/{message_id}", this::patchMessageHandler);
+
 
         return app;
     }
@@ -99,7 +101,7 @@ public class SocialMediaController {
         ctx.status(200);
     }
 
-    private void getMessageHandler(Context ctx) throws JsonProcessingException, NumberFormatException {
+    private void getMessageHandler(Context ctx) throws NumberFormatException {
         String message_id_String = ctx.pathParam("message_id");
         int message_id = Integer.valueOf(message_id_String);
         
@@ -118,5 +120,22 @@ public class SocialMediaController {
             ctx.json(deletedMessage);
         }
         ctx.status(200);
+    }
+
+    private void patchMessageHandler(Context ctx) throws JsonProcessingException, NumberFormatException {
+        ObjectMapper om = new ObjectMapper();
+        Message newMessage = om.readValue(ctx.body(), Message.class);
+        
+        String newMessageText = newMessage.getMessage_text();
+        int message_id = Integer.valueOf(ctx.pathParam("message_id"));
+        
+        Message updatedMessage = ms.updateMessageById(message_id, newMessageText);
+
+        if (updatedMessage != null) {
+            ctx.json(updatedMessage);
+            ctx.status(200);
+        } else {
+            ctx.status(400);
+        }
     }
 }

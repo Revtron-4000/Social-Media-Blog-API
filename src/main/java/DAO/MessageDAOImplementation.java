@@ -104,4 +104,26 @@ public class MessageDAOImplementation implements MessageDAO {
         }
         return m;
     }
+
+    @Override
+    public Message updateMessageById(int message_id, String newMessage) {
+        Connection conn = ConnectionUtil.getConnection();
+        Message oldMessage = getMessageById(message_id);
+
+        try {
+            String sql = "UPDATE message SET message_text=? WHERE message_id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, newMessage);
+            ps.setInt(2, message_id);
+
+            ps.executeUpdate();
+            
+            Message updatedMessage = new Message(oldMessage.getMessage_id(), oldMessage.getPosted_by(), newMessage, oldMessage.getTime_posted_epoch());
+            return updatedMessage;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
