@@ -36,6 +36,35 @@ public class MessageDAOImplementation implements MessageDAO {
     }
 
     @Override
+    public List<Message> getAccountMessages(int account_id) {
+        Connection conn = ConnectionUtil.getConnection();
+        List<Message> messages = new ArrayList<>();
+
+        try {
+            String sql = "SELECT * FROM message WHERE posted_by=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, account_id);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                Message m = new Message(rs.getInt("message_id"), 
+                rs.getInt("posted_by"), 
+                rs.getString("message_text"), 
+                rs.getLong("time_posted_epoch")
+                );
+
+                messages.add(m);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return messages;
+    }
+
+    @Override
     public Message getMessageById(int message_id) {
         Connection conn = ConnectionUtil.getConnection();
 
@@ -127,3 +156,5 @@ public class MessageDAOImplementation implements MessageDAO {
         return null;
     }
 }
+
+

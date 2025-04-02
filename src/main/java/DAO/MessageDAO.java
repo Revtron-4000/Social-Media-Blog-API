@@ -6,6 +6,7 @@ import Model.Message;
 
 public interface MessageDAO {
     public List<Message> getAllMessages();
+    public List<Message> getAccountMessages(int account_id);
     public Message getMessageById(int message_id);
     public Message insertMessage(Message m);
     public Message deleteMessageById(int message_id);

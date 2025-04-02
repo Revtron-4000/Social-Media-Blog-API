@@ -40,6 +40,7 @@ public class SocialMediaController {
 
         app.get("/messages", this::getAllMessagesHandler);
         app.get("/messages/{message_id}", this::getMessageHandler);
+        app.get("/accounts/{account_id}/messages", this::getAccountMessages);
 
         app.delete("/messages/{message_id}", this::deleteMessageHandler);
 
@@ -137,5 +138,11 @@ public class SocialMediaController {
         } else {
             ctx.status(400);
         }
+    }
+
+    private void getAccountMessages(Context ctx) throws NumberFormatException {
+        int account_id = Integer.valueOf(ctx.pathParam("account_id"));
+        ctx.json(ms.getAccountMessages(account_id));
+        ctx.status(200);
     }
 }
